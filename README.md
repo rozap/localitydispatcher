@@ -43,9 +43,13 @@ Subscribing
 ```elixir
 {:ok, producer} = LocalityProducer.start_link()
 
-consumers = Enum.map([Node.self | Node.list], fn node ->
-  {:ok, c} = SomeConsumer.start_link(locale: Node.self)
-  c
+
+Enum.each([Node.self | Node.list], fn node ->
+  {:ok, c} = SomeConsumer.start_link()
+
+  # Subscribe passing the locale option which specifies
+  # what location the node is in, in the cluster
+  GenStage.sync_subscribe(c, to: producer, locale: Node.self)
 end)
 ```
 
