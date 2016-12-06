@@ -8,7 +8,6 @@ Using the dispatcher
 defmodule LocalityProducer do
   use GenStage
 
-  @doc "Starts the broadcaster."
   def start_link() do
     GenStage.start_link(__MODULE__, :ok, name: __MODULE__)
   end
