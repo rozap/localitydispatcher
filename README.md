@@ -14,7 +14,9 @@ defmodule LocalityProducer do
 
   def init(:ok) do
     {:producer, :ok, dispatcher: LocalityDispatcher, mapper: fn event ->
-      # This returns the "locale" of the node
+      # This returns the "locale" of the event - the dispatcher
+      # will dispatch the event to the subscribers whose locale
+      # matches this
       event.node
     end}
   end
