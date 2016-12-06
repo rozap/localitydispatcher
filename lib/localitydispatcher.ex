@@ -93,7 +93,7 @@ defmodule LocalityDispatcher do
 
               demands = Enum.filter(demands, fn
                 {_, _, ^ref, _} -> false
-                other -> true
+                _ -> true
               end)
               demands = add_demand(counter, pid, ref, locale, demands)
               by_locale = Map.put(by_locale, locale, later)
