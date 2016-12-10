@@ -1,4 +1,5 @@
 # Localitydispatcher
+You may have events flowing through a GenStage that are best handled by particular nodes for locality purposes. Our use case is a GenStage based pipeline where events reference data living in ETS tables on specific nodes. It's best if those events go to the nodes on which the ETS table lives. 
 
 ## Usage
 
